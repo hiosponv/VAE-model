@@ -106,8 +106,6 @@ KLD = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp(), dim=-1)
 
 本项目采用了**线性退火**策略来逐渐增加 $\text{KLD}$ 损失的权重 $\beta$ (`kl_weight`)，以确保模型在训练初期专注于图像重构。
 
-$$\beta = \frac{\text{current\_epoch}}{\text{num\_epochs}}$$
-
 ```python
 kl_weight = i / num_epochs 
 loss = torch.mean(BCE + kl_weight * KLD)
@@ -149,3 +147,4 @@ Model saved at epoch X.
 4. https://www.bilibili.com/video/BV1op421S7Ep/?spm_id_from=333.337.search-card.all.click&vd_source=9684ecbd9b040058fc28261bb226b1de
 
 5. https://github.com/owenliang/torch-vae/blob/main/vae.ipynb
+
